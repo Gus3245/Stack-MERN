@@ -36,10 +36,8 @@ const findAllUsers = async (req, res) => {
     res.status(200).send(UserInformation);
 };
 
-const findOneById = async (req, res) => {
-    const id = req.params.id;
-
-    const user = await userService.findOneByIdService(id);
+const findOneById = (req, res) => {
+    const user = req.user;
 
     res.status(200).send(user);
 };
@@ -47,7 +45,7 @@ const findOneById = async (req, res) => {
 const findOneAndUpdate = async (req, res) => {
     const {name, username, email ,password, avatar, background} = req.body;
 
-    const id = req.params.id;
+    const {id, user} = req;
 
     await userService.findOneAndUpdateService(id, name, username, email ,password, avatar, background );
 
