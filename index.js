@@ -14,3 +14,7 @@ const MONGO_PASSWORD = '3lrlyi7GQgu56sfH';
 
 ConnectDatabase();
 
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+

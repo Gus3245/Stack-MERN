@@ -26,6 +26,7 @@ const create = async (req, res) => {
         }
     });
 };
+
 const findAllUsers = async (req, res) => {
     const UserInformation = await userService.findAllService();
 
@@ -41,7 +42,7 @@ const findOneById = async (req, res) => {
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(400).send({message: 'Invalid ID'});
     }
-    
+
     const user = await userService.findOneByIdService(id);
 
     if(!user){
@@ -51,4 +52,24 @@ const findOneById = async (req, res) => {
     res.status(200).send(user);
 };
 
-module.exports = { create, findAllUsers, findOneById };
+const findOneAndUpdate = async (req, res) => {
+    const {name, username, email ,password, avatar, background} = req.body;
+
+    if(!name && !username && !email && !password && !avatar && !background){
+        return res.status(400).json({message: 'Please provide all the information'});
+    }
+
+    const id = req.params.id;
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).send({message: 'Invalid ID'});
+    }
+
+    const user = await userService.findOneByIdService(id);
+
+    await userService.findOneAndUpdateService(id, name, username, email ,password, avatar, background );
+
+    res.send({message: 'User updated successfully'});
+};
+
+module.exports = { create, findAllUsers, findOneById, findOneAndUpdate };
