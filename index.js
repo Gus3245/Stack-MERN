@@ -10,11 +10,9 @@ const app = express();
 app.use(express.json());
 app.use("/user", userRoute);
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-const uri = "mongodb://${process.env.MONGO_USER}:${process.env.MONGO_USER_PASSWORD}@stack-mern.xeoki.mongodb.net/?retryWrites=true&w=majority&appName=Stack-Mern";
-
-ConnectDatabase(uri);
+ConnectDatabase();
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
