@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 
-const ConnectDatabase = () => {
+
+
+async function ConnectDatabase(uri) {
     console.log("Await Connect to the Database");
 
-    mongoose.connect("mongodb+srv://gustavomoreiradev3245:3lrlyi7GQgu56sfH@stack-mern.xeoki.mongodb.net/?retryWrites=true&w=majority&appName=Stack-Mern",)
+    await mongoose.connect(uri)
     .then(() => console.log("MongoDb Atlas Connected"))
     .catch((error) => console.log(error));
 };
