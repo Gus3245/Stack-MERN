@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+import brcypt from "bcrypt";
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -30,6 +31,11 @@ const UserSchema = new mongoose.Schema({
     }
 
 });
+
+UserSchema.pre("save", async function (next){
+    this.password = await brcypt.hash(this.password, 10);
+    next();
+})
 
 const User = mongoose.model('User', UserSchema);
 
