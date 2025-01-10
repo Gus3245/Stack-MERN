@@ -1,5 +1,5 @@
-const userService = require("../Services/user.services.js");
-const mongoose = require('mongoose');
+import userService from "../Services/user.services.js";
+
 
 const create = async (req, res) => {
     try{
@@ -68,4 +68,4 @@ const findOneAndUpdate = async (req, res) => {
     }
 };
 
-module.exports = { create, findAllUsers, findOneById, findOneAndUpdate };
+export default { create, findAllUsers, findOneById, findOneAndUpdate };

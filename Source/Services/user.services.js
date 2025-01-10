@@ -1,4 +1,4 @@
-const UserSchema = require('../Models/User');
+import UserSchema from '../Models/User.js';
 
 const createService = (body) => UserSchema.create(body);
 const findAllService = () => UserSchema.find({});
@@ -9,8 +9,7 @@ const findOneAndUpdateService = (id, name, username, email ,password, avatar, ba
     { name, username, email, password, avatar, background }
     );
 
-
-module.exports = {
+export default {
     createService,
     findAllService,
     findOneByIdService,

@@ -1,11 +1,10 @@
-const express = require('express');
-const userRoute = require('./Source/Routes/user.route.js');
-const ConnectDatabase = require('./Source/Database/database.js');
+import express from "express";
+import userRoute from './Source/Routes/user.route.js';
+import ConnectDatabase from './Source/Database/database.js';
+
 const app = express();
 
 //Routes, //Method Http, Name, Function (Callback)
-
-
 app.use(express.json());
 app.use("/user", userRoute);
 
