@@ -22,11 +22,17 @@ const create = async (req, res) => {
     }
 }
 
-const findAll = (req, res) => {
+const findAll = async (req, res) => {
     try {
-        res.status(200).send({message: "News Created"});
-    } catch (error) {
+        const News = await NewsService.findAllService();
         
+        if(News.length === 0){
+            return res.status(404).send({message: "News Not Found"});
+        }
+        res.status(200).send({News});
+
+    } catch (error) {
+        res.status(500).send({message: error.message});
     }
 }
 
