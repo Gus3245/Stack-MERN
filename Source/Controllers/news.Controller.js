@@ -2,7 +2,7 @@ import NewsService from "../Services/news.Service.js";
 
 const create = (req, res) => {
     try {
-        res.send(200).json({message: "News Created"});
+        res.status(200).send({message: "News Created"});
     } catch (error) {
         
     }
@@ -10,7 +10,7 @@ const create = (req, res) => {
 
 const findAll = (req, res) => {
     try {
-        res.send(200).json({message: "News Created"});
+        res.status(200).send({message: "News Created"});
     } catch (error) {
         
     }

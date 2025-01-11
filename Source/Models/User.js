@@ -31,7 +31,7 @@ const UserSchema = new mongoose.Schema({
     }
 
 });
-
+// Brcpyt Encrypty
 UserSchema.pre("save", async function (next){
     this.password = await brcypt.hash(this.password, 10);
     next();
