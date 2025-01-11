@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 import userRoute from './Source/Routes/user.route.js';
 import authRoute from './Source/Routes/auth.route.js';
+import NewsRoute from "./Source/Routes/news.route.js"; 
 
 
 dotenv.config();
@@ -13,6 +14,7 @@ const app = express();
 app.use(express.json());
 app.use("/user", userRoute);
 app.use("/auth", authRoute);
+app.use("/news", NewsRoute);
 
 const port = process.env.PORT || 3000;
 
