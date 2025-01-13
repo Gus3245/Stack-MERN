@@ -25,9 +25,11 @@ const NewsSchema = new mongoose.Schema({
     },
     likes: {
         type: Array,
+        required: true
     },
     comments: {
-
+        type: Array,
+        required: true
     }
 });
 
